@@ -15,11 +15,13 @@ public class Sort {
 		array1 = new int[size];
 		array2 = new int[size];
 		array3 = new int[size];
+		array4 = new int[size];
 		for(int i = 0; i < size;i++)
 		{
-			array1[i] = (int)(Math.random()*10000);
+			array1[i] = (int)(Math.random()*1000);
 			array2[i] = array1[i];
 			array3[i] = array1[i];
+			array4[i] = array1[i];
 		}
 		
 	}
@@ -30,7 +32,7 @@ public class Sort {
 	{
 		for(int i = 0; i < size;i++)
 		{
-			System.out.print(array2[i]);
+			System.out.print(array4[i]);
 			System.out.print(" ");
 		}
 		System.out.println();
@@ -93,6 +95,48 @@ public class Sort {
 
 	    }
 	    
+	}
+	
+	public void quickSort()
+	{
+		quickSort(0,size-1);
+	}
+	
+	private void quickSort(int left,int right)
+	{
+		int tmp;
+		int i = left;
+		int j = right;
+		int pivot = array4[(i + j)/2];
+		
+		
+		while(i <= j)
+		{
+			
+			while(array4[i] < pivot )
+				i++;
+			while(array4[j] > pivot )
+				j--;
+
+			if(i <= j)
+			{
+				
+				tmp = array4[i];
+				array4[i] = array4[j];
+				array4[j] = tmp;
+				i++;
+				j--;
+			
+			}
+
+		}
+		if(left < j)
+			quickSort(left,j);
+		if(right > i)
+			quickSort(i,right);
+		
+		
+
 	}
 	
 }
